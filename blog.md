@@ -6,7 +6,7 @@ The Transformer was first introduced in the paper *“Attention is All You Need�
 
 The chatbot model based on Transformers is trained to take a piece of text and predict the next “token.” Rather than outputting a single prediction, the Transformer assigns a probability distribution over all tokens in its vocabulary.
 
-![image (3).png](image_(3).png)
+![](images/transformer.png)
 
 Chatbots like GPT work by selecting a token (usually with high probability) from the predicted distribution and appending it to the input text. This updated sequence is then fed back into the Transformer, repeating the process until the output is complete.
 
@@ -17,7 +17,7 @@ Each token’s embedding is retrieved from the embedding matrix. These embedding
 The Query and Key matrices typically reduce the dimensionality of the embedding vectors significantly (e.g., from 12,288 to 128 in GPT-3), while the Value matrix retains the original embedding dimension.
 In each attention block, dot product between those ***Queries*** and ***Keys*** are calculated and each embedding is updated with the help of ***Values,*** hence passing information from one another.
 
-![image (4).png](image_(4).png)
+![](images/attention.png)
 
 The attention matrix is masked with a lower triangular matrix (causal masking), ensuring that future tokens do not influence past tokens. This is important for tasks like text generation, where predicting the next word must not rely on future context.
 
@@ -63,7 +63,7 @@ $$
 y = LN(z_L)
 $$
 
-![Untitled-2025-01-24-1107.png](Untitled-2025-01-24-1107.png)
+![](images/vit.png)
 
 ## ViTs VS CNNs?
 
