@@ -32,7 +32,9 @@ Vision Transformers take as input images of shape $(H,W,C)$ which are split into
 The flattened images are then mapped to D dimensions, where D refers to the encoder transformer's constant latent vector size. The output linear projections are known as patch embeddings, which are further concatenated with positional embeddings $\mathbf{E}_{\text{pos}}$.
 
 $$
-\begin{align}\mathbf{z}_0 &= [\mathbf{x}_{\text{class}} ;  \mathbf{x}_p^1 \mathbf{E}; \mathbf{x}_p^2 \mathbf{E}; \cdots; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{\text{pos}}, \nonumber\\\end{align}
+\begin{align}
+\mathbf{z}_0 &= [\mathbf{x}_{\text{class}} ; \mathbf{x}_p^1 \mathbf{E}; \mathbf{x}_p^2 \mathbf{E}; \cdots; \mathbf{x}_p^N \mathbf{E}] + \mathbf{E}_{\text{pos}} \\
+\end{align}
 $$
 
 The transformer encoder consists of alternating layers of -
@@ -40,15 +42,13 @@ The transformer encoder consists of alternating layers of -
 1. **Multiheaded Self-Attention(MSA):** This consists of multiple (say k) parallel self-attention operations, the outputs of which are concatenated and then projected. It captures the relationship between tokens in the input sequence
 
 $$
-MSA(z) = [SA_1(z); SA_2(z);\dots;SA_K(z)]U_{\text msa}
+MSA(z) = [SA_1(z); SA_2(z); \dots; SA_K(z)] \cdot U_{\text{msa}}
 $$
-
-     
 
 Here $U_\text{msa}$ is a learned linear projection matrix that maps concatenated multi-head output back to model dimension $D$.
 
 $$
-z'_l = MSA(LN(z_{\text l-1})) + z_{\text l-1}
+z'_l = MSA(\text{LN}(z_{l-1})) + z_{l-1}
 $$
 
 1. **Multilayer Perceptron(MLP)**: The MLP is a simple feed-forward neural network that transforms and refines the output of the attention layer independently for each token. This aids in modelling complex relationships within the data.
