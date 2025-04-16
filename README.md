@@ -24,4 +24,4 @@ To view the blog locally:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/manyagupta13/ViT-Blog.git
